@@ -76,8 +76,8 @@ package_linux313-virtualbox-guest-modules(){
   sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extraver'/" "$startdir/virtualbox-guest-modules.install"
 
   mkdir -p "$pkgdir/etc/modules-load.d"
-  echo "vboxguest" > "$pkgdir/etc/modules-load.d/linux313-virtualbox-guest-modules.conf"
-  echo "vboxsf" >> "$pkgdir/etc/modules-load.d/linux313-virtualbox-guest-modules.conf"
+  echo "#vboxguest" > "$pkgdir/etc/modules-load.d/linux313-virtualbox-guest-modules.conf"
+  echo "#vboxsf" >> "$pkgdir/etc/modules-load.d/linux313-virtualbox-guest-modules.conf"
   echo "vboxvideo" >> "$pkgdir/etc/modules-load.d/linux313-virtualbox-guest-modules.conf"
 }
 
