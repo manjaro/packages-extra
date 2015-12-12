@@ -15,10 +15,11 @@ url="https://github.com/manjaro/manjaro-tools-iso-profiles"
 license=('GPL')
 # options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
+sha256sums=('e8f3f827804179d2884bed1d90a6252a816a098d94e7bdd31a0e1bffd147faf6')
 
 _inst_dir(){
 	install -d $pkgdir/usr/share/manjaro-tools/iso-profiles
-	cp -a $srcdir/$1 $pkgdir/usr/share/manjaro-tools/iso-profiles/
+	cp -a $srcdir/manjaro-tools-iso-profiles-$pkgver/$1 $pkgdir/usr/share/manjaro-tools/iso-profiles/
 }
 
 package_manjaro-iso-profiles-base() {

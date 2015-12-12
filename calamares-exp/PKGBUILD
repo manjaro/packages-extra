@@ -1,14 +1,14 @@
 # Maintainer: Philip Müller <philm[at]manjaro[dog]org>
 
-pkgname=calamares-dev
+pkgname=calamares-exp
 pkgver=2.0a3
 pkgrel=1
-pkgdesc='Distribution-independent installer framework (development version)'
+pkgdesc='Distribution-independent installer framework (experimental version)'
 arch=('i686' 'x86_64')
 license=(GPL)
 url="https://github.com/calamares"
 license=('LGPL')
-conflicts=('calamares')
+conflicts=('calamares' 'calamares-dev')
 provides=('calamares')
 install=calamares.install
 depends=('kconfig' 'kcoreaddons' 'ki18n' 'solid' 'yaml-cpp' 'kpmcore'
@@ -19,7 +19,7 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
-source+=(git+https://github.com/calamares/calamares.git#branch=choicepreview
+source+=(git+https://github.com/calamares/calamares.git#branch=choicepreview-replacewidget
          git+https://github.com/calamares/calamares-manjaro.git)
 
 sha256sums=('SKIP'
@@ -38,7 +38,7 @@ pkgver() {
 
 prepare() {
 	cp -a ${srcdir}/calamares-manjaro/* ${srcdir}/calamares
-	sed -i -e "s|'calamares'|'calamares-dev'|g" ${srcdir}/calamares/src/modules/postcfg/main.py
+	sed -i -e "s|'calamares'|'calamares-exp'|g" ${srcdir}/calamares/src/modules/postcfg/main.py
 	rm -r ${srcdir}/calamares-manjaro
 }
 

@@ -12,7 +12,7 @@ groups=('manjaro-tools')
 url='https://github.com/manjaro/manjaro-tools'
 makedepends=('docbook2x')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('')
+md5sums=('80d1960796e76e5d3a79bdcc04e35244')
 
 build() {
 	cd ${srcdir}/${pkgbase}-${pkgver}
