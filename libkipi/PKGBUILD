@@ -1,0 +1,36 @@
+pkgname=libkipi
+pkgver=15.11.90.r2.gf4e7fdd
+pkgrel=1
+pkgdesc='An interface to use kipi-plugins from a KDE application'
+arch=('i686' 'x86_64')
+url='https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi'
+license=('GPL' 'LGPL' 'FDL')
+depends=('qt5-base' 'hicolor-icon-theme' 'kxmlgui')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+conflicts=('libkipi-git')
+source=('libkipi::git+git://anongit.kde.org/libkipi')
+md5sums=('SKIP')
+install=${pkgname}.install
+
+pkgver() {
+    cd ${pkgname}
+    git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+}
+
+prepare() {
+    if [[ -d "${srcdir}/build" ]]; then
+        rm -rf "${srcdir}/build"
+    fi
+    mkdir "${srcdir}/build"
+}
+
+build() {
+    cd "${srcdir}/build"
+    cmake "${srcdir}/${pkgname}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_TESTING=OFF
+    make
+}
+
+package() {
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}" install
+}
