@@ -3,7 +3,7 @@
 
 pkgname=intel-ucode
 pkgver=20151106
-pkgrel=1
+pkgrel=0.1
 pkgdesc="Microcode update files for Intel CPUs"
 arch=('any')
 install=$pkgname.install
