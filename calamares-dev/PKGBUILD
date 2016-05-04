@@ -20,11 +20,13 @@ backup=('usr/share/calamares/modules/bootloader.conf'
 
 source+=(git+https://github.com/calamares/calamares.git#branch=master
          git+https://github.com/calamares/calamares-manjaro.git#branch=master
-         prefer_budgie_before_gnome.patch)
+         prefer_budgie_before_gnome.patch::https://github.com/calamares/calamares/commit/8cbefa12e042ac85239b0312d4477cb21c241823.patch
+         do-not-export-BROWSER-var.patch::https://github.com/oberon2007/calamares-manjaro/commit/bfe86a7a6779d92310ddd9a25cbeaf7e03546273.patch)
 
 sha256sums=('SKIP'
             'SKIP'
-            '91ae6e3f0d249d57ad37361b8606883da5652eeebdb5819f9bc40b1d4f28746f')
+            '91ae6e3f0d249d57ad37361b8606883da5652eeebdb5819f9bc40b1d4f28746f'
+            'fe6cdbbf171b8950429b8431929b6305f232acdf35a5a8fda94e66f20f0c76fd')
 
 pkgver() {
 	cd ${srcdir}/calamares
@@ -42,6 +44,7 @@ prepare() {
 	sed -i -e "s|'calamares'|'calamares-dev'|g" ${srcdir}/calamares/src/modules/postcfg/main.py
 	cd ${srcdir}/calamares
 	patch -Np1 -i ${srcdir}/prefer_budgie_before_gnome.patch
+	patch -Np1 -i ${srcdir}/do-not-export-BROWSER-var.patch
 	git submodule init
 	git submodule update
 }
