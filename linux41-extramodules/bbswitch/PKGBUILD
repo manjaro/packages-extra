@@ -7,7 +7,7 @@ _pkgname=bbswitch
 _extramodules=extramodules-4.1-MANJARO
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgver=0.8
-pkgrel=13
+pkgrel=14
 pkgdesc="kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
@@ -17,8 +17,15 @@ makedepends=('linux41-headers')
 provides=("$_pkgname=$pkgver")
 groups=('linux41-extramodules')
 install=bbswitch.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
-sha256sums=('76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
+        '0001-disable-DSM-if-power-resources-are-in-use.patch')
+sha256sums=('76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477'
+            'e3959d8c3526979b6f684c06aaa061b06466a60e4c5009b2fc57cf8a3fdaa600')
+
+prepare() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    patch -Np1 -i "${srcdir}/0001-disable-DSM-if-power-resources-are-in-use.patch"
+}
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
