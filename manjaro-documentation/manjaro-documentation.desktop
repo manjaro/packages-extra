@@ -2,7 +2,9 @@
 Version=1.0
 Type=Application
 Name=Manjaro User Guide
+Name[da]=Manjaro brugerguide
 Comment=Documentation for Beginners
+Comment[da]=Dokumentation til begyndere
 Exec=/usr/bin/manjaro-documentation
 Icon=application-pdf
 Terminal=false
