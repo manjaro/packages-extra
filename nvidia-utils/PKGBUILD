@@ -3,8 +3,8 @@
 
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'mhwd-nvidia')
-pkgver=375.82
-pkgrel=1
+pkgver=384.59
+pkgrel=0
 epoch=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -18,8 +18,8 @@ source_i686=("${durl}/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("${durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha256sums=('11176f1c070bbdbfaa01a3743ec065fe71ff867b9f72f1dce0de0339b5873bb5'
             '37e2e35fcfc536a47212d57420ee3d8502b541a18027367104052aca63e63266')
-sha256sums_i686=('620629a35b1773e7eefddb9ea7982a4a75ecf65c1ea6f7ba83b94a84b269f561')
-sha256sums_x86_64=('bfbff9d4bf567b62d5298d36c7981abfc3344b9dedc1f463c96055997f2b6c4e')
+sha256sums_i686=('0c17658a4f874df43c02b521cd0a1357dfe2ea0b553be6b47ebae2e45323916c')
+sha256sums_x86_64=('2d03e687b6b77d072de057349fceb0b7b19a4387d610ea22928ce99d2945d165')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 #[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
@@ -99,7 +99,7 @@ package_nvidia-utils() {
     #ln -s "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLX_indirect.so.0"
 
     # Wayland
-    install -D -m755 "libnvidia-egl-wayland.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.${pkgver}"
+    install -D -m755 "libnvidia-egl-wayland.so.1.0.1" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.${pkgver}"
     ln -s "libnvidia-egl-wayland.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-egl-wayland.so.0"
 
     # OpenGL library
@@ -123,7 +123,7 @@ package_nvidia-utils() {
     install -D -m755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
 
     # Vulkan ICD
-    install -D -m644 "nvidia_icd.json" "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
+    install -D -m644 "nvidia_icd.json.template" "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
 
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/vdpau/libvdpau_nvidia.so.${pkgver}"
