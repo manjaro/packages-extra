@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         nss hunspell sqlite ttf-font libpulse icu libvpx)
+         nss hunspell sqlite ttf-font libpulse icu)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
