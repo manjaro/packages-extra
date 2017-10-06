@@ -17,10 +17,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
-source_x86_64=("$pkgname-$pkgver-$_pkgrel-x86_64.tar.xz::http://archlinux.thaller.ws/extra/os/x86_64/$pkgname-$pkgver-$_pkgrel-x86_64.pkg.tar.xz")
-source_i686=("$pkgname-$pkgver-$_pkgrel-i686.tar.xz::http://archlinux.thaller.ws/extra/os/i686/$pkgname-$pkgver-$_pkgrel-i686.pkg.tar.xz")
-md5sums_i686=('f32b9023f191f635bf46eb969b185e5d')
-md5sums_x86_64=('b7fa089bea420d8b5482a64b7c4f3925')
+source_x86_64=("$pkgname-$pkgver-$_pkgrel-x86_64.tar.xz::https://archlinux.thaller.ws/extra/os/x86_64/$pkgname-$pkgver-$_pkgrel-x86_64.pkg.tar.xz")
+source_i686=("$pkgname-$pkgver-$_pkgrel-i686.tar.xz::https://archlinux.thaller.ws/extra/os/i686/$pkgname-$pkgver-$_pkgrel-i686.pkg.tar.xz")
+md5sums_i686=('9c52eb8d5fd7d3fb9721570ed8cedc90873da4f0f0334429d7a1854ec4f006ea')
+md5sums_x86_64=('23966eac4a0ab1d4040c7ba92c4046ed4d06eb3c9fa5d0f207bac3ac7b3ee40f')
 
 prepare() {
     rm -rf $srcdir/usr/lib/firefox/distribution
