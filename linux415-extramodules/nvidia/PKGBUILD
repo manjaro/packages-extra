@@ -7,7 +7,7 @@ _linuxprefix=linux415
 _extramodules=extramodules-4.15-MANJARO
 pkgname=$_linuxprefix-nvidia
 _pkgname=nvidia
-pkgver=384.98
+pkgver=384.111
 pkgrel=0.8
 epoch=1
 provides=("$_pkgname=$pkgver")
@@ -25,7 +25,7 @@ durl="http://us.download.nvidia.com/XFree86/Linux-x86"
 source=("linux-4.15.0-staging.patch")
 source_x86_64=("${durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha256sums=('181efa0eb3243cf5e5ccea1a13052bf27bdb7f94dd66ae99dc8a2c5eb8d1b890')
-sha256sums_x86_64=('169909c756ce01abcb676d704638003f3b782173a8ea82f2de798e40212780f5')
+sha256sums_x86_64=('56b8c993c697aa37fe9ab1b6764304b82c86d5c745cd98dd8492be27f596ead7')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
